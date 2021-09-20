@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -22,6 +23,11 @@ mongo = PyMongo(app)
 def get_my_pubs():
     my_pubs = mongo.db.my_pubs.find()
     return render_template("my_pubs.html", my_pubs=my_pubs)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    return render_template("register.html")
 
 
 if __name__ == "__main__":
