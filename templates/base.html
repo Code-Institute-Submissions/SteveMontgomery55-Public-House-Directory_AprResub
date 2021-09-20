@@ -13,6 +13,19 @@
 </head>
 <body>
 
+    <header>
+        <nav class="brown darken-1">
+            <div class="nav-wrapper">
+              <a href="{{ url_for('get_my_pubs') }}" class="brand-logo center">Public House Directory</a>
+              <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="{{ url_for('get_my_pubs') }}">Home</a></li>
+                <li><a href="sass.html">Log In</a></li>
+                <li><a href="badges.html">Register</a></li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+
     {% block content %}
     {% endblock %}
 
