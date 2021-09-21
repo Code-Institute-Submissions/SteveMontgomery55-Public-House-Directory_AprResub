@@ -25,6 +25,13 @@ def get_my_pubs():
     return render_template("my_pubs.html", my_pubs=my_pubs)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    pubs = mongo.db.my_pubs.find({"$text": {"$search": query}})
+    return render_template("my_pubs.html", pubs=pubs)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
