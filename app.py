@@ -96,10 +96,25 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_pub")
+@app.route("/add_pub", methods=["GET", "POST"])
 def add_pub():
-    return render_template("add_pub.html")
+    if request.method == "POST":
+        pub = {
+            "pub_name": request.form.get("pub_name"),
+            "location": request.form.get("location"),
+            "date_of_visit": request.form.get("date_of_visit"),
+            "beer_quality": request.form.get("beer_quality"),
+            "food_available": request.form.get("food_available"),
+            "dog_friendly": request.form.get("dog_friendly"),
+            "comments": request.form.get("comments"),
+            "created_by": session["user"]
+        }
+        mongo.db.pubs.insert_one(pub)
+        flash("Pub Successfully Added")
+        return redirect(url_for("add_pub"))
 
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("add_pub.html", categories=categories)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
