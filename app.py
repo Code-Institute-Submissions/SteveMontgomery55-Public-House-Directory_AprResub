@@ -120,8 +120,8 @@ def add_pub():
         flash("Pub Successfully Added")
         return redirect(url_for("add_pub"))
 
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_pub.html", categories=categories)
+    categories = mongo.db.categories.find().sort("pub_name", 1)
+    return render_template("add_pub.html", my_pubs=my_pubs)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
