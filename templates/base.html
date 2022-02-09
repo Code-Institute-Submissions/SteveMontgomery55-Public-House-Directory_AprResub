@@ -17,8 +17,9 @@
         <nav class="brown lighten-4 brown darken-1">
             <div class="nav-wrapper">
               <a href="{{ url_for('get_my_pubs') }}" class="brand-logo center">Public House Directory</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
               <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="{{ url_for('get_my_pubs') }}">Home</a></li>
+                    <li><a href="{{ url_for('get_my_pubs') }}">Home</a></li>
                 {% if session.user %}
                     <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     <li><a href="{{ url_for('logout') }}">Log Out</a></li>
