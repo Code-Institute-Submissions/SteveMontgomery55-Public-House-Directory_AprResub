@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/my_pubs")
 def get_my_pubs():
-    my_pubs = mongo.db.my_pubs.find()
+    my_pubs = list(mongo.db.my_pubs.find())
     return render_template("my_pubs.html", my_pubs=my_pubs)
 
 
@@ -53,7 +53,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
         return redirect(url_for("profile", username=session["user"]))
-    return render_template("register.html")
+        return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
