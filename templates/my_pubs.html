@@ -1,20 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <h3 class="brown lighten-4 brown darken-1 center-align">All Pubs</h3>
+
     <ul class="collapsible">
         {% for pub in my_pubs %}
         <li>
-            <div class="collapsible-header white-text light-blue darken-4 text-shadow">
+            <div class="collapsible-header white-text brown lighten-4 brown darken-1">
                 <i class="fas fa-caret-down"></i>
                 <strong>{{ pub.pub_name }}</strong>
             </div>
-            <div class="collapsible-body">
+            <div class="collapsible-body white-text brown lighten-4 brown darken-1">
                 <p>{{ pub.location }}</p>
                 <p>{{ pub.date_of_visit }}</p>
                 <p>{{ pub.beer_quality }}</p>
                 <p>{{ pub.food_available }}</p>
                 <p>{{ pub.dog_friendly }}</p>
                 <p>{{ pub.comments }}</p>
+                <p><em>by: {{ pub.created_by }}</em></p>
             </div>
         </li>
         {% endfor %}

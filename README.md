@@ -124,7 +124,7 @@ Click enable automatic deployment\
 Click deploy branch\
 Click view to load new app
 
-https://flask-public-house-directory.herokuapp.com/my_pubs
+https://flask-public-house-directory.herokuapp.com
 
 >## **Credits** ###
 
