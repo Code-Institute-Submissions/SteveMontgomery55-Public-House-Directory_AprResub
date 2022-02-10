@@ -5,3 +5,12 @@
 body {
     background-image: url("https://www.spreadeaglecroydon.co.uk/-/media/sites/microsites/s/the-spread-eagle-_-p084/images/2017-new-images/homepagehero/2.ashx?w=1024");
 }
+
+.btn-small {
+    margin: 5px;
+}
+
+.collapsible-header .col strong {
+    margin: 5px;
+    line-height: 42px;
+}
