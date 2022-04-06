@@ -53,7 +53,8 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
         return redirect(url_for("profile", username=session["user"]))
-        return render_template("register.html")
+
+    return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -119,9 +120,6 @@ def add_pub():
         mongo.db.pubs.insert_one(pub)
         flash("Pub Successfully Added")
         return redirect(url_for("add_pub"))
-
-    my_pubs = mongo.db.my_pubs.find().sort("pub_name", 1)
-    return render_template("my_pubs.html", my_pubs='pub_name')
 
 
 if __name__ == "__main__":
