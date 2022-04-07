@@ -19,17 +19,17 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/my_pubs")
-def get_my_pubs():
-    my_pubs = list(mongo.db.my_pubs.find())
-    return render_template("my_pubs.html", my_pubs=my_pubs)
+@app.route("/pubs")
+def get_pubs():
+    pubs = list(mongo.db.pubs.find())
+    return render_template("pubs.html", pubs=pubs)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
     pubs = mongo.db.my_pubs.find({"$text": {"$search": query}})
-    return render_template("my_pubs.html", pubs=pubs)
+    return render_template("pubs.html", pubs=pubs)
 
 
 @app.route("/register", methods=["GET", "POST"])
