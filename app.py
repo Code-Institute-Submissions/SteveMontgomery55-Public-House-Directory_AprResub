@@ -142,6 +142,13 @@ def edit_pub(pub_id):
     return render_template("edit_pub.html", pub=pub,)
 
 
+    @app.route("/delete_pub/<pub_id>")
+    def delete_pub(pub_id):
+        mongo.db.pubs.remove({"_id": ObjectId(pub_id)})
+        flash("Pub Successfully Deleted")
+        return redirect(url_for("get_pubs"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
