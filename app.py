@@ -121,6 +121,9 @@ def add_pub():
         flash("Pub Successfully Added")
         return redirect(url_for("add_pub"))
 
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("add_pub.html", categories=categories)
+
 
 @app.route("/edit_pub/<pub_id>", methods=["GET", "POST"])
 def edit_pub(pub_id):
@@ -139,14 +142,15 @@ def edit_pub(pub_id):
         flash("Pub Successfully Updated")
 
     pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
-    return render_template("edit_pub.html", pub=pub,)
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_pub.html", pub=pub, categories=categories)
 
 
-    @app.route("/delete_pub/<pub_id>")
-    def delete_pub(pub_id):
-        mongo.db.pubs.remove({"_id": ObjectId(pub_id)})
-        flash("Pub Successfully Deleted")
-        return redirect(url_for("get_pubs"))
+@app.route("/delete_pub/<pub_id>")
+def delete_pub(pub_id):
+    mongo.db.pubs.remove({"_id": ObjectId(pub_id)})
+    flash("Pub Successfully Deleted")
+    return redirect(url_for("get_pubs"))
 
 
 if __name__ == "__main__":
