@@ -124,6 +124,20 @@ def add_pub():
 
 @app.route("/edit_pub/<pub_id>", methods=["GET", "POST"])
 def edit_pub(pub_id):
+    if request.method == "POST":
+        submit = {
+            "pub_name": request.form.get("pub_name"),
+            "location": request.form.get("location"),
+            "date_of_visit": request.form.get("date_of_visit"),
+            "beer_quality": request.form.get("beer_quality"),
+            "food_available": request.form.get("food_available"),
+            "dog_friendly": request.form.get("dog_friendly"),
+            "comments": request.form.get("comments"),
+            "created_by": session["user"]
+        }
+        mongo.db.pubs.update({"_id": ObjectId(pub_id)}, submit)
+        flash("Pub Successfully Updated")
+
     pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
     return render_template("edit_pub.html", pub=pub,)
 
