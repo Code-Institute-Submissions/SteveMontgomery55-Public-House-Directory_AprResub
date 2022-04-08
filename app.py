@@ -19,7 +19,7 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/pubs")
+@app.route("/get_pubs")
 def get_pubs():
     pubs = list(mongo.db.pubs.find())
     return render_template("pubs.html", pubs=pubs)
@@ -28,7 +28,7 @@ def get_pubs():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    pubs = mongo.db.my_pubs.find({"$text": {"$search": query}})
+    pubs = mongo.db.pubs.find({"$text": {"$search": query}})
     return render_template("pubs.html", pubs=pubs)
 
 
@@ -120,6 +120,12 @@ def add_pub():
         mongo.db.pubs.insert_one(pub)
         flash("Pub Successfully Added")
         return redirect(url_for("add_pub"))
+
+
+@app.route("/edit_pub/<pub_id>", methods=["GET", "POST"])
+def edit_pub(pub_id):
+    pub = mongo.db.pubs.find_one({"_id": ObjectId(pub_id)})
+    return render_template("edit_pub.html", pub=pub,)
 
 
 if __name__ == "__main__":
