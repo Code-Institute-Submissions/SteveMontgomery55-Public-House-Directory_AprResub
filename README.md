@@ -7,8 +7,9 @@ so other users can search, get information, visit themselves and add to there ow
 
 >## **User Experience** ##
 
-Mock up.
-
+Mock ups.
+/workspace/Public-House-Directory/readme.images/20220409_094130.jpg
+/workspace/Public-House-Directory/readme.images/20220409_094138.jpg
 
 
 ## **User Stories** ##
@@ -100,8 +101,8 @@ Fontawesome <https://fontawesome.com/> was used for the icons.
   with the possibility of users adding there own.
 
 
-
-
+All python code is pep8 compliant.
+/workspace/Public-House-Directory/readme.images/Screenshot 2022-04-09 09.40.06.png
 
 >## **Deployment** ##
 
@@ -126,7 +127,6 @@ Click view to load new app
 
 https://flask-public-house-directory.herokuapp.com
 
->## **Credits** ###
 
 ### **Content** ###
 
