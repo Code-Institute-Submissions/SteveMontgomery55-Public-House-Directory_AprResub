@@ -58,7 +58,7 @@ Fontawesome <https://fontawesome.com/> was used for the icons.
 
 1. As a First Time Visitor, I want to see what the app is.
 
-+ On first loading the app, a welcome message explains the purpose.
++ On first loading the app, it becomes obvious what the app can do.
 
 2. As a First Time Visitor, I want to see be able to use it easily.
 
