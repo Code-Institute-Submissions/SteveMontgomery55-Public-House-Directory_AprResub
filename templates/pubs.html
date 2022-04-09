@@ -38,13 +38,13 @@
                 </div>
             </div>
             <div class="collapsible-body white-text brown lighten-4 brown darken-1">
-                <p>{{ pub.location }}</p>
-                <p>{{ pub.date_of_visit }}</p>
-                <p>{{ pub.beer_quality }}</p>
-                <p>{{ pub.food_available }}</p>
-                <p>{{ pub.dog_friendly }}</p>
-                <p>{{ pub.comments }}</p>
-                <p><em>by: {{ pub.created_by }}</em></p>
+                <p>Location - {{ pub.location }}</p>
+                <p>Date Of Visit - {{ pub.date_of_visit }}</p>
+                <p>Beer Quality - {{ pub.beer_quality }}</p>
+                <p>Food Available - {{ pub.food_available }}</p>
+                <p>Dog Friendly - {{ pub.dog_friendly }}</p>
+                <p>Any Comments - {{ pub.comments }}</p>
+                <p><em>Visitor - {{ pub.created_by }}</em></p>
             </div>
         </li>
         {% endfor %}
